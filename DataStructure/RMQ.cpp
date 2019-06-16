@@ -13,8 +13,7 @@ using namespace std;
 using ll = long long;
 const int INF = (1LL<<31) - 1;
 const int MOD = 1e9 + 7;
-template<typename T>
-class RMQ
+template<typename T> class RMQ
 {
     private:
         vector<T> node;
