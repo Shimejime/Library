@@ -18,8 +18,11 @@ const int MOD = 1e9 + 7;
 const double EPS = 1e-8;
 const double PI = acos(-1);
 inline bool equals(double a, double b) { return abs(b - a) < EPS; }
-
 using Point = complex<double>;
+
+inline Point rotate(double theta, const Point &p) { return Point(cos(theta) * p.real() - sin(theta) * p.imag(), sin(theta) * p.real() + cos(theta) * p.imag()); }
+inline double radian_to_degree(double r) { return (r * 180.0 / PI); }
+inline double degree_to_radian(double d) { return (d * PI / 180.0); }
 ostream &operator<<(ostream &os, Point &p) { os << p.real() << " " << p.imag(); }
 namespace std { bool operator < (const Point &a, const Point &b) { return real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b); } }
 inline double dot(const Point &a, const Point &b) { return real(a) * real(b) + imag(a) * imag(b); }
@@ -114,7 +117,7 @@ inline Point getCrossPoint(const Line &l, const Line &m)
 }
 inline Point getCrossPoint(const Segment &l, const Segment &m) { return getCrossPoint(Line(l), Line(m)); }
 // 円と直線の交点
-pair<Point, Point> getCrossPoint(const Circle &c, const Line l)
+inline pair<Point, Point> getCrossPoint(const Circle &c, const Line l)
 {
     assert(isIntersect(c, l));
     Point pr = getProjection(l, c.p);
@@ -124,7 +127,7 @@ pair<Point, Point> getCrossPoint(const Circle &c, const Line l)
     return make_pair(pr - e * base, pr + e * base);
 }
 //円と線分の交点
-pair<Point, Point> getCrossPoint(const Circle &c, const Segment &l)
+inline pair<Point, Point> getCrossPoint(const Circle &c, const Segment &l)
 {
     Line aa = Line(l.a, l.b);
     if(isIntersect(c, l) == 2) return getCrossPoint(c, aa);
@@ -133,7 +136,7 @@ pair<Point, Point> getCrossPoint(const Circle &c, const Segment &l)
     else res.first = res.second;
     return res;
 }
-pair<Point, Point > getCrossPoint(const Circle &c1, const Circle &c2)
+inline pair<Point, Point > getCrossPoint(const Circle &c1, const Circle &c2)
 {
     double d = abs(c1.p - c2.p);
     double a = acos((c1.r * c1.r + d * d - c2.r * c2.r) / (2 * c1.r * d));
@@ -143,23 +146,23 @@ pair<Point, Point > getCrossPoint(const Circle &c1, const Circle &c2)
     return make_pair(p1, p2);
 }
 //円と点の接線
-pair<Point, Point> getTangent(const Circle &c1, const Point &p2) { return getCrossPoint(c1, Circle(p2, sqrt(norm(c1.p - p2) - c1.r * c1.r))); }
+inline pair<Point, Point> getTangent(const Circle &c1, const Point &p2) { return getCrossPoint(c1, Circle(p2, sqrt(norm(c1.p - p2) - c1.r * c1.r))); }
 //多角形の面積
-double getArea(const vector<Point> &pol)
+inline double getArea(const vector<Point> &pol)
 {
     double res = 0.0; int sz = pol.size();
     for(int i = 0; i < sz; i++) res += cross(pol[i], pol[(i + 1) % sz]);
     return res / 2.0;
 }
 //凸多角形か
-bool isConvex(const vector<Point> &pol)
+inline bool isConvex(const vector<Point> &pol)
 {
     int sz = (int)pol.size();
     for(int i = 0; i < sz; i++) { if(ccw(pol[(i + sz - 1) % sz], pol[i], pol[(i + 1) % sz]) == -1) return false; }
     return true;
 }
 // 点と多角形の包含関係
-int isContain(const vector<Point> &pol, const Point &p)
+inline int isContain(const vector<Point> &pol, const Point &p)
 {
     int sz = (int)pol.size();
     int isIn = 0;
@@ -172,7 +175,7 @@ int isContain(const vector<Point> &pol, const Point &p)
     }
     return (isIn ? 2 : 0);
 }
-vector<Point> convex_hull(vector<Point> &pol)
+inline vector<Point> convex_hull(vector<Point> &pol)
 {
     int sz = (int)pol.size(), k = 0;
     if(sz <= 2) return pol;
@@ -187,21 +190,6 @@ signed main()
 {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n; cin >> n;
-    vector<Point> polygon;
-    for(int i = 0; i < n; i++)
-    {
-        double x, y; cin >> x >> y;
-        polygon.push_back(Point(x, y));
-    }
-    vector<Point> ans = convex_hull(polygon);
-    int idx = 0;
-    for(int i = 1; i < (int)ans.size(); i++)
-    {
-        if(imag(ans[idx]) > imag(ans[i]) or (imag(ans[idx]) == imag(ans[i]) and real(ans[idx]) > real(ans[i]))) idx = i;
-    }
-    cout << ans.size() << endl;
-    for(int i = 0; i < ans.size(); i++) cout << ans[(idx + i) % (int)ans.size()] << endl;
     return 0;
 }
 
