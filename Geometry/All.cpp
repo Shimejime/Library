@@ -21,8 +21,8 @@ inline bool equals(double a, double b) { return abs(b - a) < EPS; }
 using Point = complex<double>;
 
 inline Point rotate(double theta, const Point &p) { return Point(cos(theta) * p.real() - sin(theta) * p.imag(), sin(theta) * p.real() + cos(theta) * p.imag()); }
-inline double radian_to_degree(double r) { return (r * 180.0 / PI); }
-inline double degree_to_radian(double d) { return (d * PI / 180.0); }
+inline double to_degree(double rad) { return (rad * 180.0 / PI); }
+inline double to_radian(double deg) { return (deg * PI / 180.0); }
 ostream &operator<<(ostream &os, Point &p) { os << p.real() << " " << p.imag(); }
 namespace std { bool operator < (const Point &a, const Point &b) { return real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b); } }
 inline double dot(const Point &a, const Point &b) { return real(a) * real(b) + imag(a) * imag(b); }
