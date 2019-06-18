@@ -70,19 +70,25 @@
 - 入力
 
     入力変数の名前は不都合がない限り、問題文と同じにします。
+
     問題文 : N K a b
+
     コード : N K a b
 
 - for文
 
     基本、i, j, k, lの順に使う。
+
     iが縦、jが横のイメージで。
 
 - 関数
 
     アルゴリズム名はそのまま。
+
     Ex: dfs, dijkstra, mst, etc.
+
     それ以外は動詞を使った名前
+
     Ex: getHoge, check, isOK, toHoge, calc, solve, etc.
 
 - 出力
