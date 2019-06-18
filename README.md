@@ -1,13 +1,16 @@
 # Library
-
+少しずつ整えます。
 ## アルゴリズム
 
 ### データ構造
 
 - [UnionFind](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/UnionFind.cpp)
+- [Weighted-UnionFind]
 - [RMQ](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/RMQ.cpp)
 - [RSQ](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/RSQ.cpp)
+- [遅延評価セグメント木]
 - [Treap](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/Treap.cpp)
+- [BIT]
 
 ### 幾何
 
@@ -15,17 +18,40 @@
 
 ### グラフ
 
+- [サイクル検出（有向グラフ）]
 - [LowLink]
+- [二重辺連結成分分解]
+- [トポロジカルソート]
+- [最大流]
+- [２部マッチング]
 
 ### 木
+
+- [木の直径]
+- [木の重心]
 
 ### 数学
 
 - [約数列挙](https://github.com/Yoshiakira11/Library/blob/master/Math/Divisor.cpp)
 - [冪乗](https://github.com/Yoshiakira11/Library/blob/master/Math/Power.cpp)
 - [素因数分解](https://github.com/Yoshiakira11/Library/blob/master/Math/PrimeFactor.cpp)
+- [二項係数]
+- [逆元]
+- [重複組合わせ]
+- [最小公倍数]
 
 ### 文字列
+
+- [ローリングハッシュ]
+- [Suffix Array]
+- [最長共通接頭辞]
+
+### その他
+
+- [転倒数]
+- [最長増加部分列]
+- [最長共通部分列]
+- [編集距離]
 
 ## その他
 
@@ -82,7 +108,9 @@ goto文
 
 ### 制限事項
 
+これから
 
 ### 推奨事項
 
+これから
 
