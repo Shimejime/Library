@@ -42,32 +42,31 @@
 ### 命名規則
 
 - 入力
-入力変数の名前は不都合がない限り、問題文と同じにします。
-問題文 : N K a b
-コード : N K a b
+    入力変数の名前は不都合がない限り、問題文と同じにします。
+    問題文 : N K a b
+    コード : N K a b
 
 - for文
-基本、i, j, k, lの順に使う。
-iが縦、jが横のイメージで。
+    基本、i, j, k, lの順に使う。
+    iが縦、jが横のイメージで。
 
 - 関数
-
-アルゴリズム名はそのまま。
-Ex: dfs, dijkstra, mst, etc.
-それ以外は動詞を使った名前
-Ex: getHoge, check, isOK, toHoge, calc, solve, etc.
+    アルゴリズム名はそのまま。
+    Ex: dfs, dijkstra, mst, etc.
+    それ以外は動詞を使った名前
+    Ex: getHoge, check, isOK, toHoge, calc, solve, etc.
 
 - 出力
-大体、ans, res
+    大体、ans, res
 
 - その他
- - bool系: flag, ok, ng, memo, used
- - tmp系: tmp, buff
- - 対称系: left, right, p, q, s, t
- - 位置系: idx, pos
- - 変動する系：t, now, step
- - グラフ系: v(今の頂点), u(行ける頂点）
- - 数える系: cnt, num, match, inc
+    - bool系: flag, ok, ng, memo, used
+    - tmp系: tmp, buff
+    - 対称系: left, right, p, q, s, t
+    - 位置系: idx, pos
+    - 変動する系：t, now, step
+    - グラフ系: v(今の頂点), u(行ける頂点）
+    - 数える系: cnt, num, match, inc
 
 他にも色々あるような・・・
 
