@@ -15,19 +15,20 @@ using ll = long long;
 const int INF = 1<<30;
 const int MOD = 1e9 + 7;
 
+// #include <complex>
 const double EPS = 1e-8;
 const double PI = acos(-1);
 inline bool equals(double a, double b) { return abs(b - a) < EPS; }
+//ベクトルの構成
 using Point = complex<double>;
-
-inline Point rotate(double theta, const Point &p) { return Point(cos(theta) * p.real() - sin(theta) * p.imag(), sin(theta) * p.real() + cos(theta) * p.imag()); }
-inline double to_degree(double rad) { return (rad * 180.0 / PI); }
-inline double to_radian(double deg) { return (deg * PI / 180.0); }
-ostream &operator<<(ostream &os, Point &p) { os << p.real() << " " << p.imag(); }
 namespace std { bool operator < (const Point &a, const Point &b) { return real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b); } }
 inline double dot(const Point &a, const Point &b) { return real(a) * real(b) + imag(a) * imag(b); }
 inline double cross(const Point &a, const Point &b) { return real(a) * imag(b) - imag(a) * real(b); }
-
+inline Point rotate(double theta, const Point &p) { return Point(cos(theta) * p.real() - sin(theta) * p.imag(), sin(theta) * p.real() + cos(theta) * p.imag()); }
+ostream &operator<<(ostream &os, Point &p) { os << p.real() << " " << p.imag(); }
+inline double to_degree(double rad) { return (rad * 180.0 / PI); }
+inline double to_radian(double deg) { return (deg * PI / 180.0); }
+// 順に線分、直線、円
 struct Line
 {
     Point a, b;
@@ -53,11 +54,11 @@ inline Point getReflection(const Line &l, const Point &p) { return p + (getProje
 inline int ccw(const Point &a, Point b, Point c)
 {
     b = b - a, c = c - a;
-    if(cross(b, c) > EPS) return 1;
-    if(cross(b, c) < -EPS) return -1;
-    if(dot(b, c) < 0) return 2;
-    if(norm(b) < norm(c)) return -2;
-    return 0;
+    if(cross(b, c) > EPS) return 1; //反時計回り
+    if(cross(b, c) < -EPS) return -1; //時計回り
+    if(dot(b, c) < 0) return 2; // c-a-bの順で直線上
+    if(norm(b) < norm(c)) return -2; //a-b-cの順で直線上
+    return 0; // a-c-bの順で一直線上
 }
 //点、直線、線分の交差
 inline bool isIntersect(const Line &l, const Point &p) { return abs(ccw(l.a, l.b, p)) != 1; }
@@ -161,7 +162,7 @@ inline bool isConvex(const vector<Point> &pol)
     for(int i = 0; i < sz; i++) { if(ccw(pol[(i + sz - 1) % sz], pol[i], pol[(i + 1) % sz]) == -1) return false; }
     return true;
 }
-// 点と多角形の包含関係
+//点と多角形の包含関係
 inline int isContain(const vector<Point> &pol, const Point &p)
 {
     int sz = (int)pol.size();
@@ -175,6 +176,7 @@ inline int isContain(const vector<Point> &pol, const Point &p)
     }
     return (isIn ? 2 : 0);
 }
+//凸法
 inline vector<Point> convex_hull(vector<Point> &pol)
 {
     int sz = (int)pol.size(), k = 0;
