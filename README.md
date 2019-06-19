@@ -52,7 +52,7 @@
 - [最長増加部分列]
 - [最長共通部分列]
 - [編集距離]
-- [next__combination]
+- [next_combination](https://github.com/Yoshiakira11/Library/blob/master/Math/next_combination.cpp)
 
 ## その他
 
