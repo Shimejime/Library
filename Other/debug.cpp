@@ -14,16 +14,17 @@ using ll = long long;
 const int INF = 1<<30;
 const int MOD = 1e9 + 7;
 template<class T>
-ostream &operator <<(ostream& out,const vector<T>& debug)
+template< typename T1, typename T2 >
+ostream &operator<<(ostream &os, const pair<T1, T2>& p)
 {
-    out << '[';
-    for(int i = 0; i < debug.size(); i++)
-    {
-        out << debug[i];
-        if(i != debug.size() - 1) out << ", ";
-    }
-    out << ']';
-    return out;
+    os << p.first << " " << p.second;
+    return os;
+}
+template< typename T >
+ostream &operator<<(ostream &os, const vector<T> &v)
+{
+    for(int i = 0; i < (int) v.size(); i++) os << v[i] << (i + 1 != v.size() ? " " : "");
+    return os;
 }
 int main()
 {

@@ -1,5 +1,7 @@
 # Library
-少しずつ整えます。
+
+ICPC国内予選に向けて事前準備。
+
 ## アルゴリズム
 
 ### データ構造
@@ -18,10 +20,12 @@
 
 ### グラフ
 
+- [単一始点最短路(Dijkstra)](https://github.com/Yoshiakira11/Library/blob/master/Gragh/Dijkstra.cpp)
+- [単一始点最短路(BellmanFord)](https://github.com/Yoshiakira11/Library/blob/master/Gragh/BellmanFord.cpp)
 - [サイクル検出（有向グラフ）]
 - [LowLink]
 - [二重辺連結成分分解]
-- [トポロジカルソート]
+- [トポロジカルソート](https://github.com/Yoshiakira11/Library/blob/master/Gragh/TopologicalSort.cpp)
 - [最大流]
 - [２部マッチング]
 
@@ -35,8 +39,8 @@
 - [約数列挙](https://github.com/Yoshiakira11/Library/blob/master/Math/Divisor.cpp)
 - [冪乗](https://github.com/Yoshiakira11/Library/blob/master/Math/Power.cpp)
 - [素因数分解](https://github.com/Yoshiakira11/Library/blob/master/Math/PrimeFactor.cpp)
-- [二項係数]
-- [逆元]
+- [二項係数](https://github.com/Yoshiakira11/Library/blob/master/Math/Combination.cpp)
+- [逆元](https://github.com/Yoshiakira11/Library/blob/master/Math/mod_inv.cpp)
 - [重複組合わせ]
 - [最小公倍数]
 
@@ -103,15 +107,15 @@
     - 位置系: idx, pos
     - 変動する系：t, now, step
     - グラフ系: v(今の頂点), u(行ける頂点）
-    - 数える系: cnt, num, match, inc
-
-他にもあるような・・・
+    - 数える系: cnt, num, match, inc, total, sum
 
 ### 禁止事項
 
 goto文
+
 一文字を#define
-インデントがぐだぐだ
+
+インデントがばらばら
 
 ### 制限事項
 
