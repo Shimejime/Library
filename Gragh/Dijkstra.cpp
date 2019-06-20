@@ -1,47 +1,68 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <functional>
+#include <vector>
+#include <utility>
+#include <cstring>
+#include <iomanip>
+#include <numeric>
+#include <cmath>
+#include <cassert>
+#include <queue>
 using namespace std;
 typedef long long ll;
-const int INF = 1<<30; 
+const int INF = 1<<30;
 const int MOD = 1e9 + 7;
-const int MAX_N = 11000;
-int cost[MAX_N][MAX_N], d[MAX_N];
-bool used[MAX_N];
-void dijkstra(int n)
+
+template<typename T> struct edge
 {
-    for(int i = 0; i <= n; i++) { d[i] = INF; used[i] = false; }
-    d[0] = 0;
-    while(true)
+    int to; T cost;
+    edge(int to, T cost) : to(to), cost(cost) {}
+};
+template<typename T>
+using Gragh = vector<vector<edge<T>>>;
+template<typename T>
+vector<T> dijkstra(Gragh<T> &G, int s)
+{
+    vector<T> dist(G.size(), INF);
+    using P = pair<T, int>;
+    priority_queue<P, vector<P>, greater<P>> que;
+    dist[s] = 0;
+    que.push(make_pair(dist[s], s));
+    while(que.size())
     {
-        int v = -1;
-        for(int u = 0; u < n; u++)
+        P p = que.top(); que.pop();
+        int v = p.second;
+        if(dist[v] < p.first) continue;
+        for(auto &e : G[v])
         {
-            if(not used[u] && (v == -1 || d[u] < d[v])) v = u;
+            if(dist[e.to] > p.first + e.cost)
+            {
+                dist[e.to] = p.first + e.cost;
+                que.push(make_pair(dist[e.to], e.to));
+            }
         }
-        if(v == -1) break;
-        used[v] = true;
-        for(int u = 0; u < n; u++) d[u] = min(d[u], d[v] + cost[v][u]);
     }
-    for(int i = 0; i < n; i++) cout << i << " " << d[i] << endl;
+    return dist;
 }
+
 int main()
 {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n; cin >> n;
-    for(int i = 0; i < n; i++)
+    int V, E, r; cin >> V >> E >> r;
+    Gragh<int> G(V);
+    for(int i = 0; i < E; i++)
     {
-        for(int j = 0; j < n; j++) cost[i][j] = INF;
+        int s, t, d; cin >> s >> t >> d;
+        G[s].emplace_back(t, d);
     }
-    for(int i = 0; i < n; i++)
+    vector<int> res = dijkstra(G, r);
+    for(auto &ans : res)
     {
-        int u, k; cin >> u >> k;
-        for(int i = 0; i < k; i++)
-        {
-            int v, c; cin >> v >> c;
-            cost[u][v] = c;
-        }
+        if(ans == INF) cout << "INF" << endl;
+        else cout << ans << endl;
     }
-    dijkstra(n);
     return 0;
 }
