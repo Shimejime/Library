@@ -1,46 +1,65 @@
 #include <iostream>
 #include <string>
-#define MAX_N 110
+#include <algorithm>
+#include <functional>
+#include <vector>
+#include <utility>
+#include <cstring>
+#include <iomanip>
+#include <numeric>
+#include <cmath>
+#include <cassert>
+#include <queue>
 using namespace std;
-typedef long long ll;
-const int INF = 1<<30; 
+using ll = long long;
+const int INF = 1<<30;
 const int MOD = 1e9 + 7;
-int cost[MAX_N][MAX_N], mincost[MAX_N];
-bool used[MAX_N];
-int prim(int n)
+
+template<typename T> struct edge
 {
-    int res = 0;
-    mincost[0] = 0;
-    while(true)
+    int to; T cost;
+    edge(int to, T cost) : to(to), cost(cost) {}
+};
+template<typename T>
+using Gragh = vector<vector<edge<T>>>;
+
+template<typename T> T MST(Gragh<T> &G)
+{
+    using P = pair<T, int>;
+    priority_queue<P, vector<P>, greater<P>> que;
+    vector<int> used(G.size(), 0);
+    T res = 0;
+    que.push(make_pair(0, 0));
+    while(que.size())
     {
-        int v = -1;
-        for(int u = 0; u < n; u++)
+        P p = que.top(); que.pop();
+        int v = p.second;
+        if(used[v]) continue;
+        used[v] = 1;
+        res += p.first;
+        for(auto &u : G[v])
         {
-            if(!used[u] && (v == -1 || mincost[u] < mincost[v])) v = u;
+            if(used[u.to]) continue;
+            que.push(make_pair(u.cost, u.to));
         }
-        if(v == -1) break;
-        used[v] = true;
-        res += mincost[v];
-        for(int u = 0; u < n; u++) mincost[u] = min(mincost[u], cost[v][u]);
     }
     return res;
 }
-int main()
+
+signed main(void)
 {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n; cin >> n;
-    for(int i = 0; i < MAX_N; i++) used[i] = false;
-    for(int i = 0; i < n; i++)
+    int V, E; cin >> V >> E;
+    Gragh<int> G(V);
+    for(int i = 0; i < E; i++)
     {
-        for(int j = 0; j < n; j++)
-        {
-            cin >> cost[i][j];
-            if(cost[i][j] == -1) cost[i][j] = INF;
-        }
-        mincost[i] = INF;
+        int s, t, w; cin >> s >> t >> w;
+        G[s].emplace_back(t, w);
+        G[t].emplace_back(s, w);
     }
-    int ans = prim(n);
-    cout << ans << endl;
+    cout << MST(G) << endl;
     return 0;
 }
+
+
