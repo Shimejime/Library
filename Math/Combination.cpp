@@ -14,6 +14,8 @@ using ll = long long;
 const int INF = 1<<30;
 const int MOD = 1e9 + 7;
 
+// cf. https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a
+
 template<typename T>
 struct Combination
 {
