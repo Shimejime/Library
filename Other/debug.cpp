@@ -13,6 +13,7 @@ using namespace std;
 using ll = long long;
 const int INF = 1<<30;
 const int MOD = 1e9 + 7;
+#define debug(x) cout << #x << ": " << x << endl
 template<typename T1, typename T2>
 ostream &operator<<(ostream &os, const pair<T1, T2>& p)
 {
