@@ -1,6 +1,7 @@
 # Library
 
 ICPC国内予選に向けて事前準備。
+[競技ルール](https://icpc.iisf.or.jp/2019-yokohama/2019kokunaiyosen/rules/)
 
 ## アルゴリズム
 
@@ -22,7 +23,7 @@ ICPC国内予選に向けて事前準備。
 
 - [単一始点最短路(Dijkstra)](https://github.com/Yoshiakira11/Library/blob/master/Gragh/Dijkstra.cpp)
 - [単一始点最短路(BellmanFord)](https://github.com/Yoshiakira11/Library/blob/master/Gragh/BellmanFord.cpp)
-- [最小全域木](https://github.com/Yoshiakira11/Library/blob/master/Gragh/MST.cpp)
+- [最小全域木(Prim)](https://github.com/Yoshiakira11/Library/blob/master/Gragh/MST.cpp)
 - [サイクル検出（有向グラフ）]
 - [LowLink]
 - [二重辺連結成分分解]
@@ -125,4 +126,5 @@ goto文
 ### 推奨事項
 
 これから
+
 
