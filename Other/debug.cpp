@@ -13,14 +13,13 @@ using namespace std;
 using ll = long long;
 const int INF = 1<<30;
 const int MOD = 1e9 + 7;
-template<class T>
-template< typename T1, typename T2 >
+template<typename T1, typename T2>
 ostream &operator<<(ostream &os, const pair<T1, T2>& p)
 {
-    os << p.first << " " << p.second;
+    os << p.first << " : " << p.second;
     return os;
 }
-template< typename T >
+template<typename T>
 ostream &operator<<(ostream &os, const vector<T> &v)
 {
     for(int i = 0; i < (int) v.size(); i++) os << v[i] << (i + 1 != v.size() ? " " : "");
@@ -33,6 +32,10 @@ int main()
     vector<int> v;
     for(int i = 0; i < 10; i++) v.push_back(i);
     cout << v << endl;
+
+    vector<pair<int, int>> u;
+    for(int i = 0; i < 10; i++) u.push_back(make_pair(i, 10 - i));
+    cout << u << endl;
     return 0;
 }
 
