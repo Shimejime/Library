@@ -1,7 +1,8 @@
 # Library
 
 ICPC国内予選に向けて事前準備。
-[競技ルール](https://icpc.iisf.or.jp/2019-yokohama/2019kokunaiyosen/rules/)
+
+>[競技ルール](https://icpc.iisf.or.jp/2019-yokohama/2019kokunaiyosen/rules/)
 
 ## アルゴリズム
 
@@ -44,11 +45,11 @@ ICPC国内予選に向けて事前準備。
 - [二項係数](https://github.com/Yoshiakira11/Library/blob/master/Math/Combination.cpp)
 - [逆元](https://github.com/Yoshiakira11/Library/blob/master/Math/mod_inv.cpp)
 - [重複組合わせ]
-- [最小公倍数]
+- [最小公倍数](https://github.com/Yoshiakira11/Library/blob/master/Math/LCM.cpp)
 
 ### 文字列
 
-- [ローリングハッシュ]
+- [ローリングハッシュ](https://github.com/Yoshiakira11/Library/blob/master/String/RollingHash.cpp)
 - [Suffix Array]
 - [最長共通接頭辞]
 
