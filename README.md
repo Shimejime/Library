@@ -26,7 +26,7 @@ ICPC国内予選に向けて事前準備。
 - [単一始点最短路(BellmanFord)](https://github.com/Yoshiakira11/Library/blob/master/Gragh/BellmanFord.cpp)
 - [最小全域木(Prim)](https://github.com/Yoshiakira11/Library/blob/master/Gragh/MST.cpp)
 - [サイクル検出（有向グラフ）]
-- [LowLink]
+- [LowLink](https://github.com/Yoshiakira11/Library/blob/master/Gragh/LowLink.cpp)
 - [二重辺連結成分分解]
 - [トポロジカルソート](https://github.com/Yoshiakira11/Library/blob/master/Gragh/TopologicalSort.cpp)
 - [最大流]
