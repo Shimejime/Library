@@ -1,5 +1,4 @@
-template<typename type>
-vector<type> divisor(type n)
+template<typename type> vector<type> divisor(type n)
 {
     vector<type> res;
     for(type i = 1; i * i <= n; i++)
