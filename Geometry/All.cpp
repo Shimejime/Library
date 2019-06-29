@@ -1,22 +1,5 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <functional>
-#include <vector>
-#include <utility>
-#include <cstring>
-#include <iomanip>
-#include <numeric>
-#include <cmath>
-#include <cassert>
-#include <complex>
-using namespace std;
-using ll = long long;
-const int INF = 1<<30;
-const int MOD = 1e9 + 7;
-
 // #include <complex>
-const double EPS = 1e-8;
+const double EPS = 1e-9;
 const double PI = acos(-1);
 inline bool equals(double a, double b) { return abs(b - a) < EPS; }
 //ベクトルの構成
@@ -26,6 +9,7 @@ inline double dot(const Point &a, const Point &b) { return real(a) * real(b) + i
 inline double cross(const Point &a, const Point &b) { return real(a) * imag(b) - imag(a) * real(b); }
 inline Point rotate(double theta, const Point &p) { return Point(cos(theta) * p.real() - sin(theta) * p.imag(), sin(theta) * p.real() + cos(theta) * p.imag()); }
 ostream &operator<<(ostream &os, Point &p) { os << p.real() << " " << p.imag(); }
+
 inline double to_degree(double rad) { return (rad * 180.0 / PI); }
 inline double to_radian(double deg) { return (deg * PI / 180.0); }
 // 順に線分、直線、円
@@ -43,6 +27,7 @@ struct Circle
 
 inline bool isParallel(const Line &a, const Line &b) { return equals(cross(a.b - a.a, b.b - b.a), 0.0); }
 inline bool isOrthogonal(const Line &a, const Line &b) { return equals(dot(a.a - a.b, b.a - b.b), 0.0); }
+
 template<typename T = Line>
 inline Point getProjection(const T &l, const Point &p)
 {
@@ -50,6 +35,7 @@ inline Point getProjection(const T &l, const Point &p)
     return l.a + (l.a - l.b) * t;
 }
 inline Point getReflection(const Line &l, const Point &p) { return p + (getProjection(l, p) - p) * 2.0; }
+
 //位置関係
 inline int ccw(const Point &a, Point b, Point c)
 {
@@ -66,6 +52,7 @@ inline bool isIntersect(const Line &l, const Line &m) { return abs(cross(l.b - l
 inline bool isIntersect(const Segment &s, const Point &p) { return ccw(s.a, s.b, p) == 0; }
 inline bool isIntersect(const Line &l, const Segment &s) { return cross(l.b - l.a, s.a - l.a) * cross(l.b - l.a, s.b - l.a) < EPS; }
 inline bool isIntersect(const Segment &s, const Segment &t) { return ccw(s.a, s.b, t.a) * ccw(s.a, s.b, t.b) <= 0 && ccw(t.a, t.b, s.a) * ccw(t.a, t.b, s.b) <= 0; }
+
 //距離
 inline double getDistance(const Point &a, const Point &b) { return abs(a - b); }
 inline double getDistance(const Line &l, const Point &p) { return abs(p - getProjection(l, p)); }
@@ -117,6 +104,7 @@ inline Point getCrossPoint(const Line &l, const Line &m)
     return m.a + (m.b - m.a) * b / a;
 }
 inline Point getCrossPoint(const Segment &l, const Segment &m) { return getCrossPoint(Line(l), Line(m)); }
+
 // 円と直線の交点
 inline pair<Point, Point> getCrossPoint(const Circle &c, const Line l)
 {
@@ -127,6 +115,7 @@ inline pair<Point, Point> getCrossPoint(const Circle &c, const Line l)
     double base = sqrt(c.r * c.r - norm(pr - c.p));
     return make_pair(pr - e * base, pr + e * base);
 }
+
 //円と線分の交点
 inline pair<Point, Point> getCrossPoint(const Circle &c, const Segment &l)
 {
@@ -146,8 +135,10 @@ inline pair<Point, Point > getCrossPoint(const Circle &c1, const Circle &c2)
     Point p2 = c1.p + Point(cos(t - a) * c1.r, sin(t - a) * c1.r);
     return make_pair(p1, p2);
 }
+
 //円と点の接線
 inline pair<Point, Point> getTangent(const Circle &c1, const Point &p2) { return getCrossPoint(c1, Circle(p2, sqrt(norm(c1.p - p2) - c1.r * c1.r))); }
+
 //多角形の面積
 inline double getArea(const vector<Point> &pol)
 {
@@ -155,6 +146,7 @@ inline double getArea(const vector<Point> &pol)
     for(int i = 0; i < sz; i++) res += cross(pol[i], pol[(i + 1) % sz]);
     return res / 2.0;
 }
+
 //凸多角形か
 inline bool isConvex(const vector<Point> &pol)
 {
@@ -162,6 +154,7 @@ inline bool isConvex(const vector<Point> &pol)
     for(int i = 0; i < sz; i++) { if(ccw(pol[(i + sz - 1) % sz], pol[i], pol[(i + 1) % sz]) == -1) return false; }
     return true;
 }
+
 //点と多角形の包含関係
 inline int isContain(const vector<Point> &pol, const Point &p)
 {
@@ -176,6 +169,7 @@ inline int isContain(const vector<Point> &pol, const Point &p)
     }
     return (isIn ? 2 : 0);
 }
+
 //凸法
 inline vector<Point> convex_hull(vector<Point> &pol)
 {
@@ -188,11 +182,4 @@ inline vector<Point> convex_hull(vector<Point> &pol)
     res.resize(k - 1);
     return res;
 }
-signed main()
-{
-    cin.tie(0);
-    ios::sync_with_stdio(false);
-    return 0;
-}
-
 

@@ -1,20 +1,3 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <functional>
-#include <vector>
-#include <utility>
-#include <cstring>
-#include <iomanip>
-#include <numeric>
-#include <cmath>
-#include <cassert>
-#include <queue>
-using namespace std;
-using ll = long long;
-const int INF = 1<<30;
-const int MOD = 1e9 + 7;
-
 struct TopologicalSort
 {
     int V;
@@ -62,21 +45,5 @@ struct TopologicalSort
         return res;
     }
 };
-
-signed main(void)
-{
-    cin.tie(0);
-    ios::sync_with_stdio(false);
-    int V, E; cin >> V >> E;
-    TopologicalSort topolo = TopologicalSort(V);
-    for(int i = 0; i < E; i++)
-    {
-        int s, t; cin >> s >> t;
-        topolo.add_edge(s, t);
-    }
-    auto ans = topolo.build();
-    for(auto &x : ans) cout << x << endl;
-    return 0;
-}
 
 

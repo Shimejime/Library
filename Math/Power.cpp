@@ -1,6 +1,5 @@
 //x^n mod
-template<typename Type>
-Type power(Type x, Type n, Type mod)
+template<typename Type> Type power(Type x, Type n, Type mod)
 {
     Type res = 1;
     while(n > 0)

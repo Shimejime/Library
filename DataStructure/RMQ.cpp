@@ -1,18 +1,3 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <functional>
-#include <vector>
-#include <utility>
-#include <cstring>
-#include <iomanip>
-#include <numeric>
-#include <cmath>
-#include <cassert>
-using namespace std;
-using ll = long long;
-const int INF = (1LL<<31) - 1;
-const int MOD = 1e9 + 7;
 template<typename T> class RMQ
 {
     private:
@@ -46,18 +31,4 @@ template<typename T> class RMQ
         }
         T query(int s, int t) { return query(s, t, 0, 0, N); }
 };
-signed main()
-{
-    cin.tie(0);
-    ios::sync_with_stdio(false);
-    int n, q; cin >> n >> q;
-    RMQ<int> rmq(n);
-    for(int i = 0; i < q; i++)
-    {
-        int com, x, y; cin >> com >> x >> y;
-        if(com == 0) rmq.update(x, y);
-        else cout << rmq.query(x, y + 1) << endl;
-    }
-    return 0;
-}
 

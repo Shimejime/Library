@@ -1,20 +1,5 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <functional>
-#include <vector>
-#include <utility>
-#include <cstring>
-#include <iomanip>
-#include <numeric>
-#include <cmath>
-#include <cassert>
-using namespace std;
-using ll = long long;
-const int INF = 1<<30;
-const int MOD = 1e9 + 7;
-template<typename Iterator>
 //O(n ^ k)ぐらい
+template<typename Iterator>
 inline bool next_combination(const Iterator s, Iterator k, const Iterator t)
 {
     if((s == t) or (s == k) or (k == t)) return false;
@@ -47,10 +32,7 @@ inline int next_combination(int sub)
 }
 signed main(void)
 {
-    cin.tie(0);
-    ios::sync_with_stdio(false);
-    int n = 5;
-    int k = 3;
+    int n = 5, k = 3;
     for (int bit = (1<<k) - 1 ;bit < (1<<n); bit = next_combination(bit))
     {
         vector<int> S;

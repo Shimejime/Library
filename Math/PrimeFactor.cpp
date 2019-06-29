@@ -1,5 +1,4 @@
-template<typename Type>
-map<Type, int > prime_factor(Type n)
+template<typename Type> map<Type, int > prime_factor(Type n)
 {
     map<Type, int > res;
     for(Type i = 2; i * i <= n; i++)

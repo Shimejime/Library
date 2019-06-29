@@ -1,9 +1,3 @@
-#include <iostream>
-#include <vector>
-using namespace std;
-typedef long long ll;
-const int INF = 1<<30; 
-const int MOD = 1e9 + 7;
 template<class Type> class Treap
 {
    public:
@@ -43,7 +37,7 @@ template<class Type> class Treap
                    u->left = insert(u->left, key, p);
                    if(u->left->pri > u->pri) u = rightRotate(u);
                }
-               else 
+               else
                {
                    u->right = insert(u->right, key, p);
                    if(u->right->pri > u->pri) u = leftRotate(u);
@@ -56,7 +50,7 @@ template<class Type> class Treap
            if(u == nullptr) return false;
            else if(key == u->key) return true;
            else if(key < u->key) return find(u->left, key);
-           else return find(u->right, key); 
+           else return find(u->right, key);
        }
        Node *remove(Node *u, Type key)
        {
@@ -88,36 +82,9 @@ template<class Type> class Treap
        }
        void preorder(Node *u)
        {
-           cout << " " << u->key; 
+           cout << " " << u->key;
            if(u->left != nullptr) preorder(u->left);
            if(u->right != nullptr) preorder(u->right);
        }
 };
-int main()
-{
-    int n; cin >> n;
-    Treap<int> T;
-    Treap<int>::Node *root = nullptr;
-    for(int i = 0; i < n; i++)
-    {
-        string s; cin >> s;
-        if(s == "insert")
-        {
-            int key, pri; cin >> key >> pri;
-            root = T.insert(root, key, pri);
-        }
-        if(s == "find")
-        {
-            int key; cin >> key;
-            cout << (T.find(root, key) ? "yes" : "no") << endl;
-        }
-        if(s == "delete")
-        {
-            int key, pri; cin >> key;
-            root = T.remove(root, key);
-        }
-        if(s == "print") T.print(root);
-    }
-    return 0;
-}
 

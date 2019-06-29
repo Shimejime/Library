@@ -1,20 +1,3 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <functional>
-#include <vector>
-#include <utility>
-#include <cstring>
-#include <iomanip>
-#include <numeric>
-#include <cmath>
-#include <cassert>
-#include <set>
-using namespace std;
-using ll = long long;
-const int INF = 1<<30;
-const int MOD = 1e9 + 7;
-
 using Gragh = vector<vector<int>>;
 struct LowLink
 {
@@ -54,21 +37,3 @@ struct LowLink
     }
     void build() { dfs(0, -1); }
 };
-
-signed main()
-{
-    cin.tie(0);
-    ios::sync_with_stdio(false);
-    int V, E; cin >> V >> E;
-    LowLink L(V);
-    for(int i = 0; i < E; i++)
-    {
-        int s, t; cin >> s >> t;
-        L.add_edge(s, t);
-        L.add_edge(t, s);
-    }
-    L.build();
-    sort(L.bridges.begin(), L.bridges.end());
-    for(auto ans : L.bridges) cout << ans.first << " " << ans.second << endl;
-    return 0;
-}
