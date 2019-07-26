@@ -13,21 +13,11 @@ template<typename T> struct Combination
             rfact[i] = rfact[i - 1] * inv[i] % MOD;
         }
     }
-    T P(int n, int r)
+    T C(int n, int k)
     {
-        if(r < 0 or n < r) return 0;
-        return fact[n] * rfact[n - r];
-    }
-    T C(int n, int r)
-    {
-        if(n < 0 or n < r) return 0;
-        return fact[n] * rfact[r] * rfact[n - r];
-    }
-    T H(int n, int r)
-    {
-        if(n < 0 or r < 0) return 0;
-        return (r == 0 ? 1 C(n + r - 1, r));
+        if(n < k) return 0;
+        if(n < 0 or k < 0) return 0;
+        return fact[n] * (rfact[k] * rfact[n - k] % MOD) % MOD;
     }
 };
-
 
