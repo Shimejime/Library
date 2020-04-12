@@ -1,4 +1,4 @@
-int MOD = (int)1e9 + 7;
+// int MOD = (int)1e9 + 7;
 template <int mod>
 struct ModInt
 {
