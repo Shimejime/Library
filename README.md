@@ -25,7 +25,7 @@
 
 ### 数学
 
-- [ModInt]
+- [ModInt](https://github.com/Shimejime/Library/blob/master/Math/modint.cpp)
 - [約数列挙](https://github.com/Yoshiakira11/Library/blob/master/Math/divisor.cpp)
 - [冪乗](https://github.com/Yoshiakira11/Library/blob/master/Math/power.cpp)
 - [素因数分解](https://github.com/Yoshiakira11/Library/blob/master/Math/prime_factor.cpp)
