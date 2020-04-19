@@ -61,7 +61,7 @@ struct ModInt
         {
             if (n & 1)
             {
-                ret *= mul;
+                res *= mul;
             }
             mul *= mul;
             n >>= 1;
