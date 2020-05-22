@@ -5,16 +5,9 @@
 #include <vector>
 #include <utility>
 #include <cstring>
-#include <iomanip>
-#include <numeric>
-#include <cmath>
-#include <cassert>
 using namespace std;
 using ll = long long;
-const int INF = 1<<30;
-const int MOD = (int)1e9 + 7;
-const int MAX_N = (int)1e5 + 5;
-template<typename T> int LIS(vector<T> A)
+template<typename T> int LIS(vector<T> A, const int INF=1<<30)
 {
     int n = A.size();
     vector<T> dp(n, INF);
