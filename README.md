@@ -7,7 +7,7 @@
 ### データ構造
 
 - [UnionFind](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/UnionFind.cpp)
-- [RMQ](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/RMQ.cpp)
+- [SegmentTree](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/SegmentTree.cpp)
 - [RSQ](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/RSQ.cpp)
 - [Treap](https://github.com/Yoshiakira11/Library/blob/master/DataStructure/Treap.cpp)
 
